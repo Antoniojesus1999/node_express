@@ -1,25 +1,15 @@
 const express = require('express');
 const path = require('path');
-const { CLIENT_RENEG_LIMIT } = require('tls');
+//const { CLIENT_RENEG_LIMIT } = require('tls');
 
 require('dotenv').config();
 //App de express
 const app = express();
 //Node Server
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+module.exports.io = require('socket.io')(server);
+require('./sockets/socket')
 
-io.on('connection', client => {
-    console.log('Cliente conectado');
-
-    client.on('disconnect', () => { console.log('Cliente desconectado')});
-
-    client.on('mensaje',(payload)=>{
-       console.log('Mensaje ',payload);
-
-       //io.emit('mensaje',{admin:'Nuevo mensaje'});
-    });
-  });
 
 //Mensajes de Sockets
 
