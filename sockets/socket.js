@@ -9,4 +9,11 @@ io.on('connection', client => {
 
        io.emit('mensaje',{admin:'Nuevo mensaje'});
     });
+
+    client.on('emitir-mensaje',(payload)=>{
+      //io.emit('nuevo-mensaje',payload);
+      client.broadcast.emit('nuevo-mensaje',payload);
+      console.log(payload);
+   });
+
   });
