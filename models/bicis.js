@@ -5,7 +5,7 @@ class Bicis{
         this.bicis = [];
     }
 
-    addBand(bici = new Bici()) {
+    addBici(bici = new Bici()) {
         this.bicis.push(bici)
     }
 
