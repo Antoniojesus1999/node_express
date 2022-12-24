@@ -18,17 +18,18 @@
             console.log('Perdimos comunicación con el servidor');
         });
 
-        socket.emit('mensaje', {nombre:'ANTONIO'});
+        //socket.emit('mensaje', {nombre:'ANTONIO'});
 
         socket.on('mensaje',function(payload){
             console.log(payload);
         })
-        socket.on('nuevo-mensaje',function(payload){
-            console.log(payload);
+        socket.on('nuevo-mensaje',function(bicis){
+            console.log(bicis);
         })
 
         socket.on('active-bicis',function(payload){
-            console.log(payload);
+            console.clear();
+            console.table(payload);
         })
     </script>
     <h1>Acceso denegado</h1>

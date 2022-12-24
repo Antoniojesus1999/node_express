@@ -1,9 +1,9 @@
 const {v4: uuidV4} = require('uuid');
 class Bici{
-    constructor(name = 'no-name'){
+    constructor(nombre = 'no-name'){
         this.id = uuidV4();
-        this.name = name;
-        this.votos = 0;
+        this.nombre = nombre;
+        this.votos=0;
     }
 }
 

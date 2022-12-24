@@ -16,16 +16,10 @@ io.on('connection', client => {
 
     
 
-    client.on('mensaje',(payload)=>{
-       console.log('Mensaje ',payload);
-
-       io.emit('mensaje',{admin:'Nuevo mensaje'});
-    });
-
-    client.on('emitir-mensaje',(payload)=>{
-      //io.emit('nuevo-mensaje',payload);
-      client.broadcast.emit('nuevo-mensaje',payload);
-      console.log(payload);
-   });
+   client.on('votar-bici',(payload) =>{
+      console.log('Payload ->' + payload.id);
+      bicis.votarBici(payload.id);
+      io.emit('active-bicis',bicis.getBicis());
+   })
 
   });
