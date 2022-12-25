@@ -17,9 +17,17 @@ io.on('connection', client => {
     
 
    client.on('votar-bici',(payload) =>{
-      console.log('Payload ->' + payload.id);
+      console.log('se ha votado la bici ->' + payload.id);
       bicis.votarBici(payload.id);
       io.emit('active-bicis',bicis.getBicis());
-   })
+   });
+
+   client.on('crear-bici',(payload) =>{
+      
+      const newBici = new Bici(payload.nombre); 
+      console.log('Se va a crear la bici -> ' +newBici.nombre);
+      bicis.addBici(newBici);
+      io.emit('active-bicis',bicis.getBicis());
+   });
 
   });
