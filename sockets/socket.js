@@ -30,4 +30,18 @@ io.on('connection', client => {
       io.emit('active-bicis',bicis.getBicis());
    });
 
+   client.on('delete-bici',(payload) =>{
+      
+      const newBici = new Bici(payload.id); 
+      console.log('Se va a borrar la bici -> ' +newBici.nombre);
+      bicis.addBici(newBici);
+      io.emit('active-bicis',bicis.getBicis());
+   });
+
+   client.on('borrar-bici',(payload) =>{
+      console.log('Se va a borrar una bici');
+      bicis.deleteBici(payload.id);
+      io.emit('active-bicis',bicis.getBicis());
+   });
+
   });
